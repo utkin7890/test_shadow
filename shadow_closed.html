@@ -1,0 +1,16 @@
+<!doctype html>
+<body>
+<h1>Test shadow DOM closed</h1>
+<script>
+customElements.define('show-hello', class extends HTMLElement {
+  connectedCallback() {
+    const shadow = this.attachShadow({mode: 'closed'});
+    shadow.innerHTML = `<p>
+      Hello, ${this.getAttribute('name')}
+    </p>`;
+  }
+});
+</script>
+
+<show-hello name="John"></show-hello>
+</body>
